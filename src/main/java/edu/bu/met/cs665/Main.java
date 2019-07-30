@@ -1,5 +1,6 @@
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.customer.Customer;
 import edu.bu.met.cs665.example1.Person;
 import org.apache.log4j.Logger;
 // import org.apache.log4j.PropertyConfigurator;
@@ -23,15 +24,15 @@ public class Main {
     // Let us create an object of the Main class.
     Main m = new Main();
 
-    logger.info(m.doIt());
+    // Creating different types of customers
+    Customer businessCustomer = CustomerEmailFactory.createAccount("Joe Smith", "5 Pironi Court", "Business");
+    Customer returnCustomer = CustomerEmailFactory.createAccount("Diane Smith", "2 Windmill Court", "Returning");
+    Customer frequentCustomer = CustomerEmailFactory.createAccount("John Doe", "2 Chauncy Place", "Frequent");
+    Customer newCustomer = CustomerEmailFactory.createAccount("Joe Smith", "5 Pironi Court", "New");
+    Customer VIPCustomer = CustomerEmailFactory.createAccount("Joe Smith", "5 Pironi Court", "VIP");
 
-    logger.trace("Trace Message!");
-    logger.debug("Debug Message!");
-    logger.info("Info Message!");
-    logger.warn("Warn Message!");
-    logger.error("Error Message!");
-    logger.fatal("Fatal Message!");
-
+    String businessEmail = "We have the invoices for you tomorrow";
+    CustomerEmailFactory.sendCustomerEmail(businessCustomer, businessEmail);
   }
 
 

@@ -120,4 +120,24 @@ target/site/checkstyle.html
 mvn -DrepoToken=YOUR-REPO-TOCKEN-ON-COVERALLS  cobertura:cobertura coveralls:report
 ```
 
+# Implementation Details
+```
+The purpose of this application is for a the user of the application to generate 
+emails to a specific type of customer at runtime. The user of the application may not
+know ahead of time to which customer an email be sent, so a customer object 
+is generated at runtime which then sends the proper email for the right customer account.
+
+New customer accounts can be made as long as the subclass extends the Customer superclass.
+
+This application uses the factory pattern to create accounts from a CustomerEmailFactory class.
+Customer accounts can only be made from the this factory class, and customer emails may be 
+sent from this account as well. The factory deciphers which CustomerBundle to create
+during account creation and sends the proper email depending on the account type.
+
+Future implementations would include a Set<Customer> to keep track which emails have been sent 
+to X customers. There can also be a check to see if an email has already been sent, by keep track
+of the dates emails were sent. This way, a customer wont be prone to multiple emails about
+the same subject matter.
+```
+
 
